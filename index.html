@@ -1,0 +1,133 @@
+<HTML>
+<HEADER><TITLE>Muaz's World</TITLE></HEADER>
+<body style="background-color:black; margin:0; padding:0;">
+
+    <!-- Elfsight Banner | Untitled Banner -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-64fee052-2654-40d7-9905-e08766869ef0" data-elfsight-app-lazy></div>
+
+<!-- Buttons -->
+<div style="text-align:center; padding:10px;">
+  <button onclick="loadGame()"
+          style="padding:12px 20px; font-size:20px; border-radius:8px; cursor:pointer;">
+    1v1.lol
+  </button>
+</div>
+
+<div style="text-align:center; padding:10px;">
+  <button onclick="loadMusic()"
+          style="padding:12px 20px; font-size:20px; border-radius:8px; cursor:pointer;">
+    Music
+  </button>
+</div>
+
+<div id="gameSection" style="display:none;"></div>
+<div id="musicSection" style="display:none;"></div>
+
+<script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/UnityProgress.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/2.7.js"></script>
+
+<script>
+var gameInstance;
+
+function hideAll() {
+  document.getElementById('gameSection').style.display = "none";
+  document.getElementById('musicSection').style.display = "none";
+}
+
+function loadGame() {
+  hideAll(); // hide everything first
+  if (!document.getElementById('gameContainer')) {
+    document.getElementById('gameSection').innerHTML = `
+      <div class="webgl-content">
+        <div id="gameContainer" style="width:100%; height:100%; margin:0; padding:0; background:black;">
+          <canvas id="#canvas" style="width:100%; height:100%; cursor:default;"></canvas>
+        </div>
+      </div>`;
+    gameInstance = UnityLoader.instantiate("gameContainer", "https://cdn.jsdelivr.net/gh/n-101-1/1@main/2.7.json", {
+      onProgress: UnityProgress
+    });
+  }
+  document.getElementById('gameSection').style.display = "block"; // show game
+  document.getElementById('gameSection').scrollIntoView({behavior:'smooth'});
+}
+
+function loadMusic() {
+  hideAll(); // hide everything first
+  if (!document.getElementById('musicIframe')) {
+    document.getElementById('musicSection').innerHTML = `
+
+      <!-- Artist 1 -->
+      <iframe id="musicIframe" data-testid="embed-iframe" style="border-radius:12px" 
+        src="https://open.spotify.com/embed/artist/3TVXtAsR1Inumwj472S9r4?utm_source=generator" 
+        width="100%" height="352" frameBorder="0" allowfullscreen="" 
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+        loading="lazy">
+      </iframe>
+
+      <!-- Artist 2 -->
+      <iframe data-testid="embed-iframe" style="border-radius:12px" 
+        src="https://open.spotify.com/embed/artist/5f7VJjfbwm532GiveGC0ZK?utm_source=generator" 
+        width="100%" height="352" frameBorder="0" allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+      </iframe>
+
+      <!-- Artist 3 -->
+      <iframe data-testid="embed-iframe" style="border-radius:12px" 
+        src="https://open.spotify.com/embed/artist/0Y5tJX1MQlPlqiwlOH1tJY?utm_source=generator" 
+        width="100%" height="352" frameBorder="0" allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+      </iframe>
+
+      <!-- Artist 4 -->
+      <iframe data-testid="embed-iframe" style="border-radius:12px" 
+        src="https://open.spotify.com/embed/artist/2HPaUgqeutzr3jx5a9WyDV?utm_source=generator" 
+        width="100%" height="352" frameBorder="0" allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+      </iframe>
+
+      <!-- Artist 5 -->
+      <iframe data-testid="embed-iframe" style="border-radius:12px" 
+        src="https://open.spotify.com/embed/artist/5H4yInM5zmHqpKIoMNAx4r?utm_source=generator" 
+        width="100%" height="352" frameBorder="0" allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+      </iframe>
+
+    `;
+  }
+  document.getElementById('musicSection').style.display = "block"; // show music
+  document.getElementById('musicSection').scrollIntoView({behavior:'smooth'});
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firebase-app.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firebase-auth.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firebase-firestore.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firebase.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1login.js?v=2"></script>
+<script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firestore.js"></script>
+
+<script>
+initializeFireBase();
+
+function showAds() {
+  console.log("show ads");
+}
+function requestNewAd() {
+  unityAdFinishedCallback();
+}
+function unityAdFinishedCallback() {
+  try {
+    if (gameInstance) gameInstance.SendMessage("AdsManager", "OnWebCallback");
+  } catch (error) {
+    console.log(error);
+  }
+}
+</script>
+</body>
+</html>
+ight:100%; margin:0; padding:0; background:black;">
